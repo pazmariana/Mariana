@@ -1,0 +1,30 @@
+---
+title: "Mariana"
+author: "Viviane Girardin"
+date: "20 March 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library("ggplot2")
+library("reshape2")
+library("ggpubr")
+mariana<-read.table("CA_Mariana.txt", header = T, check.names = FALSE, sep = "\t")
+
+head(dat.bio)
+dat.bio<-melt(mariana,id.vars = "Samples")
+
+
+ggplot(data = dat.bio, aes(x=Samples, y=value)) + geom_boxplot(aes(fill=variable), alpha=0.5)+ facet_wrap( ~ variable, scales="free") + theme(axis.text.x = element_text(angle = 90, hjust = 1))+labs(title="Comet Assay",x="Cells",y="DNA damage", fill="Tests")
+
+marlog<-log1p(mariana$FPG)
+shapiro.test(marlog)
+
+
+```
+
