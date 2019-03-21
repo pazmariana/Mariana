@@ -25,7 +25,8 @@ ggplot(data = dat.bio, aes(x=Samples, y=value)) + geom_boxplot(aes(fill=variable
 #Can only run the test only with 5000 points
 marlog<-log1p(mariana$FPG) #this is log +1.  Mariana is the file, #$FPG is the column. You have to do this way in order to test for 
 #normality
-shapiro.test(marlog) # shapiro-wilk test for normality
+marlogLys<-log1p(mariana$Lysis)
+shapiro.test(marlogLys) # shapiro-wilk test for normality
 
 
 ```
