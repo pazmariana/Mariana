@@ -22,8 +22,10 @@ dat.bio<-melt(mariana,id.vars = "Samples")
 
 ggplot(data = dat.bio, aes(x=Samples, y=value)) + geom_boxplot(aes(fill=variable), alpha=0.5)+ facet_wrap( ~ variable, scales="free") + theme(axis.text.x = element_text(angle = 90, hjust = 1))+labs(title="Comet Assay",x="Cells",y="DNA damage", fill="Tests")
 
-marlog<-log1p(mariana$FPG)
-shapiro.test(marlog)
+#Can only run the test only with 5000 points
+marlog<-log1p(mariana$FPG) #this is log +1.  Mariana is the file, #$FPG is the column. You have to do this way in order to test for 
+#normality
+shapiro.test(marlog) # shapiro-wilk test for normality
 
 
 ```
