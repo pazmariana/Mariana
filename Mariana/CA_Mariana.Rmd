@@ -30,4 +30,3 @@ shapiro.test(marlogLys) # shapiro-wilk test for normality
 
 
 ```
-
